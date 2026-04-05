@@ -89,6 +89,30 @@ mysql -uroot -proot docker_asset < src/main/resources/db/schema.sql
 mvn -Dmaven.repo.local=/home/ubuntu/Docker/.m2/repository spring-boot:run -B
 ```
 
+## Docker 镜像
+
+构建镜像：
+
+```bash
+docker build -t docker-asset-backend:latest .
+```
+
+运行容器：
+
+```bash
+docker run -d --name docker-asset-backend -p 8080:8080 docker-asset-backend:latest
+```
+
+说明：
+
+- 容器默认使用 `docker` profile
+- 数据库存储为容器内 H2 文件库，路径为 `/app/data`
+- 如果要保留数据，建议挂载卷：
+
+```bash
+docker run -d --name docker-asset-backend -p 8080:8080 -v docker_asset_data:/app/data docker-asset-backend:latest
+```
+
 ## 打包
 
 ```bash
