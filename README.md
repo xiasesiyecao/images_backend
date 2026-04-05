@@ -105,12 +105,19 @@ docker run -d --name docker-asset-backend -p 8080:8080 docker-asset-backend:late
 
 说明：
 
-- 容器默认使用 `docker` profile
-- 数据库存储为容器内 H2 文件库，路径为 `/app/data`
-- 如果要保留数据，建议挂载卷：
+- 容器默认使用 `mysql` profile
+- 默认连接 `mysql:3306/docker_asset`
+- 建议通过 Docker Compose 与 MySQL 一起启动
+
+如果你希望单独运行后端镜像，需要保证有一个可访问的 MySQL 实例，并且容器网络里主机名为 `mysql`，或自行覆盖 Spring 数据源配置。
+
+## Docker Compose 推荐方式
+
+根目录已经提供完整编排：
 
 ```bash
-docker run -d --name docker-asset-backend -p 8080:8080 -v docker_asset_data:/app/data docker-asset-backend:latest
+cd ..
+docker compose up --build -d
 ```
 
 ## 打包

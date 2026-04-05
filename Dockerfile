@@ -14,9 +14,7 @@ WORKDIR /app
 
 COPY --from=builder /build/target/docker-asset-backend-0.0.1-SNAPSHOT.jar app.jar
 
-RUN mkdir -p /app/data
-
-ENV SPRING_PROFILES_ACTIVE=docker
+ENV SPRING_PROFILES_ACTIVE=mysql
 EXPOSE 8080
 
 CMD ["java", "-jar", "/app/app.jar"]
