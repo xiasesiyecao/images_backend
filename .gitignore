@@ -1,0 +1,28 @@
+# build output
+target/
+
+# local data
+data/
+
+# local maven cache if stored inside repo
+.m2/
+
+# logs
+*.log
+logs/
+
+# java
+*.class
+
+# h2 database
+*.mv.db
+*.trace.db
+
+# editor files
+.idea/
+.vscode/
+*.iml
+
+# system files
+.DS_Store
+Thumbs.db
